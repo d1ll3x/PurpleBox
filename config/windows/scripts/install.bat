@@ -27,4 +27,4 @@ powershell -Command "Start-Service winlogbeat"
 
 :: Download and install Atomic Red Team
 powershell -Command "IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam -getAtomics -Force"
-powershell -Command "Install-Module -Name invoke-atomicredteam,powershell-yaml -Scope CurrentUser -Force -AcceptLicense"
+powershell -Command "Install-Module -Name invoke-atomicredteam,powershell-yaml -Scope CurrentUser -Force"
