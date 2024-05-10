@@ -1,2 +1,2 @@
-# elk
-Detection development environment based on the ELK stack and Atomic Red Team
+# STEALTH
+Security Testing Environment for Analyzing Logs and TTP Hunting

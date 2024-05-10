@@ -1,0 +1,82 @@
+services:
+
+  elasticsearch:
+    image: elasticsearch:8.9.2
+    container_name: elasticsearch
+    mem_limit: 2048m
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - TZ=Europe/Amsterdam
+      - discovery.type=single-node
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - xpack.security.enabled=false
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    networks:
+      - stealth
+
+  logstash:
+    image: logstash:8.9.2
+    container_name: logstash
+    mem_limit: 2048m
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - ./config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./config/logstash/pipeline:/usr/share/logstash/pipeline
+    environment:
+      - TZ=Europe/Amsterdam    
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    networks:
+      - stealth
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:8.9.2
+    container_name: kibana
+    mem_limit: 2048m
+    ports:
+      - "5601:5601"
+    volumes:
+      - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    environment:
+      - TZ=Europe/Amsterdam    
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"      
+    networks:
+      - stealth
+    depends_on:
+      - elasticsearch
+
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    devices:
+      - "/dev/kvm"
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8006:8006"
+      - "3389:3389"
+    volumes:
+      - ./config/windows/scripts:/storage/oem
+      - ./config/windows/Autounattend.xml:/run/assets/win11x64.xml
+      - ./config/windows/share:/storage/shared
+    environment:
+      - TZ=Europe/Amsterdam    
+      - VERSION=core11
+      - DISK_SIZE=10G
+      - RAM_SIZE=2G
+    networks:
+      - stealth
+
+networks:
+  stealth:
+    driver: bridge
