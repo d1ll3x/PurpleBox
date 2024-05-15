@@ -1,18 +1,18 @@
 --------------------------------------------------------
- Windows for Docker v3.01...
+ Windows for Docker v3.05...
  For support visit https://github.com/dockur/windows
 --------------------------------------------------------
 
 Using this folder you can share files with the host machine.
 
-To change the storage location, include the following bind mount in your compose file:
+To change its location, include the following bind mount in your compose file:
 
   volumes:
-    - "/home/user/example:/storage/shared"
+    - "/home/user/example:/shared"
 
 Or in your run command:
 
-  -v "/home/user/example:/storage/shared"
+  -v "/home/user/example:/shared"
 
-Replace the example path /home/user/example with the desired storage folder.
+Replace the example path /home/user/example with the desired shared folder.
 

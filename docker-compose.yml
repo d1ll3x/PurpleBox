@@ -68,9 +68,10 @@ services:
       - ./config/windows/scripts:/storage/oem
       - ./config/windows/Autounattend.xml:/run/assets/win11x64.xml
       - ./config/windows/share:/storage/shared
+      - ./config/windows/w11pro.iso:/custom.iso
     environment:
       - TZ=Europe/Amsterdam    
-      - VERSION=tiny11
+      #- VERSION=tiny11
       - DISK_SIZE=15G
       - RAM_SIZE=2G
     networks:
