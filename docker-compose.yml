@@ -1,5 +1,4 @@
 services:
-
   elasticsearch:
     image: elasticsearch:8.9.2
     container_name: elasticsearch
@@ -19,7 +18,8 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
     networks:
-      - stealth
+      atomic:
+        ipv4_address: 172.18.0.4
 
   logstash:
     image: logstash:8.9.2
@@ -35,7 +35,8 @@ services:
       - TZ=Europe/Amsterdam    
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
     networks:
-      - stealth
+      atomic:
+        ipv4_address: 172.18.0.3
     depends_on:
       - elasticsearch
 
@@ -51,7 +52,8 @@ services:
       - TZ=Europe/Amsterdam    
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"      
     networks:
-      - stealth
+      atomic:
+        ipv4_address: 172.18.0.5
     depends_on:
       - elasticsearch
 
@@ -74,8 +76,13 @@ services:
       - DISK_SIZE=15G
       - RAM_SIZE=2G
     networks:
-      - stealth
+      atomic:
+        ipv4_address: 172.18.0.2
 
 networks:
-  stealth:
+  atomic:
     driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16
+         gateway: 172.18.0.1
