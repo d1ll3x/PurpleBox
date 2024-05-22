@@ -1,5 +1,5 @@
 --------------------------------------------------------
- Windows for Docker v3.03...
+ Windows for Docker v3.05...
  For support visit https://github.com/dockur/windows
 --------------------------------------------------------
 

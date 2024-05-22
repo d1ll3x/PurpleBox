@@ -307,7 +307,7 @@
         </RunSynchronousCommand>
         <RunSynchronousCommand wcm:action="add"> 
           <Order>25</Order>        
-          <Path>REG ADD "HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths" /V C:\AtomicRedTeam</Path>
+          <Path>REG ADD "HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths" /V C:\Tools\AtomicRedTeam</Path>
           <Description>Exclude AtomicRedTeam directory</Description>
         </RunSynchronousCommand>
       </RunSynchronous>
