@@ -18,6 +18,6 @@ Install-Module -Name powershell-yaml -Force
 # Download and install Invoke-AtomicRedTeam
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading Invoke-AtomicRedTeam and atomic tests..."
 IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing);
-Install-AtomicRedTeam -getAtomics -InstallPath "c:\Tools\AtomicRedTeam"
+Install-AtomicRedTeam -getAtomics -InstallPath "C:\Tools\AtomicRedTeam"
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Updating Profile.ps1 to import the Invoke-AtomicRedTeam module..."
 Add-Content -Path C:\Windows\System32\WindowsPowerShell\v1.0\Profile.ps1 'Import-Module "C:\Tools\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1"' -Force
