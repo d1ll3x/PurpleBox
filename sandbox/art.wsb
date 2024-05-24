@@ -1,0 +1,8 @@
+<Configuration>
+    <Networking>Enable</Networking>
+    <LogonCommand>
+      <Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted
+        -Command "start powershell { -NoExit -Command \"&amp; { Set-ExecutionPolicy Bypass -Scope Process -Force; (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/d1ll3x/AtomicSandbox/main/sandbox/scripts/install-redteam.ps1', 'C:\Windows\Temp\install-redteam.ps1'); C:\Windows\Temp\install-redteam.ps1 }\" }"</Command>
+        -Command "start powershell { -NoExit -Command \"&amp; { Set-ExecutionPolicy Bypass -Scope Process -Force; (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/d1ll3x/AtomicSandbox/main/sandbox/scripts/install-winlogbeat.ps1', 'C:\Windows\Temp\install-winlogbeat.ps1'); C:\Windows\Temp\install-winlogbeat.ps1 }\" }"</Command>        
+    </LogonCommand>
+</Configuration>
