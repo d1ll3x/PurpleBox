@@ -1,2 +1,2 @@
-# STEALTH
-Security Testing Environment for Analyzing Logs and TTP Hunting
+# Atomic Sandbox
+Security Testing Environment running on Windows Sandbox
