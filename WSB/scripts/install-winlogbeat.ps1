@@ -43,7 +43,7 @@ Catch {
 # Download Winlogbeat.yml
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading winlogbeat.yml..."
 Try {
-  Invoke-WebRequest 'https://raw.githubusercontent.com/d1ll3x/AtomicSandbox/main/sandbox/config/winlogbeat.yml'-UseBasicParsing -OutFile $winlogbeatPath;
+  Invoke-WebRequest 'https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/config/winlogbeat.yml'-UseBasicParsing -OutFile $winlogbeatPath;
   Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Success!"
 }
 Catch {
