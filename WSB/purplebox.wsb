@@ -5,8 +5,8 @@
             C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted -Command "
                 start powershell -NoExit -Command \"& {
                     Set-ExecutionPolicy Bypass -Scope Process -Force;
-                    $url1 = 'https://raw.githubusercontent.com/d1ll3x/AtomicSandbox/main/sandbox/scripts/install-redteam.ps1';
-                    $url2 = 'https://raw.githubusercontent.com/d1ll3x/AtomicSandbox/main/sandbox/scripts/install-winlogbeat.ps1';
+                    $url1 = 'https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/scripts/install-redteam.ps1';
+                    $url2 = 'https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/scripts/install-winlogbeat.ps1';
                     $file1 = 'C:\Windows\Temp\install-redteam.ps1';
                     $file2 = 'C:\Windows\Temp\install-winlogbeat.ps1';
                     Invoke-WebRequest -Uri $url1 -OutFile $file1;
