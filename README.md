@@ -5,7 +5,7 @@ Purple Box is a fully local security testing environment aimed at testing detect
 
 ## Prerequisites
 In order to use purple box on your Windows workstation your system must be configured with the following Windows features:
-- Windows Sandbox
+- [Windows Sandbox](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-overview#installation)
 - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ### WSL2
