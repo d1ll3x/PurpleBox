@@ -7,7 +7,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./ELK/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       - TZ=Europe/Amsterdam
       - discovery.type=single-node
@@ -19,7 +19,7 @@ services:
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
     networks:
       atomic:
-        ipv4_address: 172.18.0.4
+        ipv4_address: 172.18.0.2
 
   logstash:
     image: logstash:8.9.2
@@ -29,8 +29,8 @@ services:
       - "5044:5044"
       - "9600:9600"
     volumes:
-      - ./config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./config/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./ELK/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./ELK/logstash/pipeline:/usr/share/logstash/pipeline
     environment:
       - TZ=Europe/Amsterdam    
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
@@ -47,37 +47,15 @@ services:
     ports:
       - "5601:5601"
     volumes:
-      - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./ELK/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     environment:
       - TZ=Europe/Amsterdam    
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"      
     networks:
       atomic:
-        ipv4_address: 172.18.0.5
+        ipv4_address: 172.18.0.4
     depends_on:
       - elasticsearch
-
-  windows:
-    image: dockurr/windows
-    container_name: windows
-    devices:
-      - "/dev/kvm"
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - "8006:8006"
-    volumes:
-      - ./config/windows/scripts:/storage/oem
-      - ./config/windows/Autounattend.xml:/run/assets/win11x64.xml
-      - ./config/windows/share:/storage/shared
-    environment:
-      - TZ=Europe/Amsterdam    
-      - VERSION=tiny11
-      - DISK_SIZE=15G
-      - RAM_SIZE=2G
-    networks:
-      atomic:
-        ipv4_address: 172.18.0.2
 
 networks:
   atomic:
