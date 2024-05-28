@@ -1,5 +1,7 @@
+![Purplebox](purplebox.png)
+
 # Purple Box
-This is a fully local security testing environment aimed at testing detection rules and attack tactics and techniques. The goal behind the project is to allow blue and red teamers a very agile method to get a testing environment up and running on their local device instead of having to rely on remote infrastructure.
+Purple Box is a fully local security testing environment aimed at testing detection rules and attack tactics and techniques. The goal behind the project is to allow blue and red teamers a very agile method to get a testing environment up and running on their local device instead of having to rely on remote infrastructure.
 
 ## Windows Sandbox (WSB)
 This project uses Windows Sandbox as the testing environment which is equiped with Elastic's winlogbeat agent and the renowned testing framework from Atomic Red Team, known as Invoke-AtomicRedTeam.
