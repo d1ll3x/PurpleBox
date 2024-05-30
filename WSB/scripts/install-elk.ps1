@@ -20,7 +20,7 @@ foreach ($package in $packages) {
 # Download config files from repo
 foreach ($package in $packages) {
   $version = choco list $package | Where-Object { $_ -match $package } | ForEach-Object { ($_ -split ' ')[1] }
-  $path = "C:\ProgramData\chocolatey\lib\$package\tools\$version"
+  $path = "C:\ProgramData\chocolatey\lib\$package\tools\$package-$version"
 
   if ($package -eq "logstash" ) {
     Try {
