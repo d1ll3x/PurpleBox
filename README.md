@@ -1,4 +1,5 @@
 ![Purplebox](purplebox.png)
+
 Purple Box is a fully local security testing environment aimed at testing detection rules and attack tactics and techniques. The goal behind the project is to allow blue and red teamers a very agile method to get a testing environment up and running on their local Windows based device without having to rely on remote infrastructure.
 
 **Purple Box is not a replacement for your security testing infrastructure, but rather a starting point for security testing for personal or professional use**
