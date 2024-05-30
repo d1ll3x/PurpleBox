@@ -5,7 +5,7 @@
         -Command "start powershell { -NoExit -Command \"&amp; { Set-ExecutionPolicy Bypass -Scope Process -Force;
           iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
           (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/scripts/install-redteam.ps1', 'C:\Windows\Temp\install-redteam.ps1'); 
-          (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/scripts/install-elk.ps1', 'C:\Windows\Temp\install-winlogbeat.ps1');
+          (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/WSB/scripts/install-elk.ps1', 'C:\Windows\Temp\install-elk.ps1');
           choco install nssm -y;
           C:\Windows\Temp\install-elk.ps1;
           C:\Windows\Temp\install-redteam.ps1 }\" }"
