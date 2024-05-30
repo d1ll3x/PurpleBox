@@ -1,0 +1,4 @@
+---
+cluster.name: elasticsearch
+network.host: localhost
+xpack.security.enabled: false

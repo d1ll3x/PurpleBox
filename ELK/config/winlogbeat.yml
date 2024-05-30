@@ -529,7 +529,7 @@ output.logstash:
   enabled: true
 
   # The Logstash hosts
-  hosts: ["172.18.0.3:5044"]
+  hosts: ["localhost:5044"]
 
   # Number of workers per Logstash host.
   #worker: 1
