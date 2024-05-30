@@ -4,7 +4,6 @@
 $packages = @("winlogbeat", "elasticsearch", "logstash", "kibana")
 
 Set-ExecutionPolicy Bypass -Scope Process -Force;
-$ErrorActionPreference = 'SilentlyContinue'
 
 # Installing packages from Chocolatey
 foreach ($package in $packages) {
@@ -26,6 +25,9 @@ foreach ($package in $packages) {
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading winlogbeat.conf..."
       Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/winlogbeat.conf"-UseBasicParsing -OutFile "$path/config/winlogbeat.conf";
+      
+      Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading $package.yml..."
+      Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/$package.yml"-UseBasicParsing -OutFile "$path/config/$package.yml";
     }
     Catch {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Unable to download config files for: $package An error occured: $_"

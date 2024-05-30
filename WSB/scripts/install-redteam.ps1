@@ -1,13 +1,11 @@
 # Purpose: Installs the invoke-atomicredteam powershell module to execute atomic tests
 
 Set-ExecutionPolicy Bypass -Scope Process -Force;
-$ErrorActionPreference = "Stop"
 
 # Installing NuGet dependency
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Installing NuGet..."
 Try {
     Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Success!"
 }
 Catch {
     Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) An error occured: $_"
@@ -20,7 +18,7 @@ Try {
     Install-AtomicRedTeam -getAtomics -Force;
     New-Item $PROFILE -Force;
     Set-Variable -Name "ARTPath" -Value "C:\AtomicRedTeam"
-    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Success!"
+    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Successfully installed Invoke-AtomicRedTeam!"
 }
 Catch {
     Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) An error occured: $_"
