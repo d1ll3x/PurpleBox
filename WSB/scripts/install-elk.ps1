@@ -4,6 +4,7 @@
 $packages = @("winlogbeat", "elasticsearch", "logstash", "kibana")
 
 Set-ExecutionPolicy Bypass -Scope Process -Force;
+$ErrorActionPreference = 'SilentlyContinue'
 
 # Installing packages from Chocolatey
 foreach ($package in $packages) {
