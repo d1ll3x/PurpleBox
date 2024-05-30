@@ -53,16 +53,15 @@ foreach ($package in $packages) {
 }
 
 # Starting the ELK stack
+Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Initialzing the ELK stack..."
 foreach ($package in $packages) {
-  Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Initialzing the ELK stack..."
   if ($package -eq "logstash" ) {
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Creating Logstash service with NSSM..."
-      nssm install $package "$path/bin" [-f "$path/config/winlogbeat.conf"]
-      nssm start 
+      nssm install $package "$path/bin/$package.bat" [-f "$path/config/winlogbeat.conf"]
     }
     Catch {
-      Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) An error occured: $_"
+      Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Failed to create the service: $package. An error occured: $_"
     }
   }
   Try {
@@ -70,7 +69,7 @@ foreach ($package in $packages) {
     get-service "$package*" | Start-Service
   }
   Catch {
-    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Failed to start $package. An error occured: $_"
+    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Failed to start service: $package. An error occured: $_"
   }
 }
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) All done, ELK is up and running!"
