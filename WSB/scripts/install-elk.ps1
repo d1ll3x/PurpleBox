@@ -63,7 +63,7 @@ foreach ($package in $packages) {
     $path = "C:\ProgramData\chocolatey\lib\$package\tools\$package-$version"
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Creating $package service with NSSM..."
-      nssm install $package "$path/bin/$package.bat" [-f "$path/config/winlogbeat.conf"]
+      nssm install $package "$path/bin/$package.bat" -f "$path/config/winlogbeat.conf"
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Starting $package..."
       nssm start "$package"
     }
