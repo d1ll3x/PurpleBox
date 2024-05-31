@@ -17,4 +17,6 @@ Currently the following .wsb files are available for you to use:
 - [ELK.wsb](https://github.com/d1ll3x/PurpleBox/blob/main/WSB/ELK.wsb)
 
 ### ELK
-The ELK stack is running locally in the windows sandbox without having to rely on any cloud solutions.
+If you choose the ELK.wsb file the ELK stack will run locally in the windows sandbox without having to rely on any cloud solutions.
+All YAML config files are set to default for each ELK component and for the winlogbeat agent. There is however, one exception made for elasticsearch.
+xpack.security.enabled is set to false to avoid hassle with tokens for the other ELK components to connect to the elasticsearch environment. **This is generally not best practice, but this sandbox should be considered as a development/test environment**
