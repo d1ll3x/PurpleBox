@@ -18,5 +18,9 @@ Currently the following .wsb files are available for you to use:
 
 ### ELK
 If you choose the ELK.wsb file the ELK stack will run locally in the windows sandbox without having to rely on any cloud solutions.
+To work with the ELK stack:
+- Open the browser and navigate to localhost:5601 (default kibana port)
+- Whenever you execute an atomic from the command line you can review this by looking at the data in Kibana
+
 All YAML config files are set to default for each ELK component and for the winlogbeat agent. There is however, one exception made for elasticsearch.
 xpack.security.enabled is set to false to avoid hassle with tokens for the other ELK components to connect to the elasticsearch environment. **This is generally not best practice, but this sandbox should be considered as a development/test environment**
