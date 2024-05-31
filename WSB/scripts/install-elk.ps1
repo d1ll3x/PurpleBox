@@ -59,6 +59,8 @@ foreach ($package in $packages) {
 Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Initialzing the ELK stack..."
 foreach ($package in $packages) {
   if ($package -eq "logstash" ) {
+    $version = choco list $package | Where-Object { $_ -match $package } | ForEach-Object { ($_ -split ' ')[1] }
+    $path = "C:\ProgramData\chocolatey\lib\$package\tools\$package-$version"
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Creating $package service with NSSM..."
       nssm install $package "$path/bin/$package.bat" [-f "$path/config/winlogbeat.conf"]
