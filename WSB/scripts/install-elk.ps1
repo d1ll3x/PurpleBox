@@ -2,6 +2,7 @@
 # Also configures their respective .yml and .conf files from GitHub
 
 $packages = @("winlogbeat", "elasticsearch", "logstash", "kibana")
+$repo = "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/config/elk"
 
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
@@ -24,10 +25,10 @@ foreach ($package in $packages) {
   if ($package -eq "logstash" ) {
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading winlogbeat.conf..."
-      Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/winlogbeat.conf"-UseBasicParsing -OutFile "$path/config/winlogbeat.conf";
+      Invoke-WebRequest "$repo/winlogbeat.conf"-UseBasicParsing -OutFile "$path/config/winlogbeat.conf";
       
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading $package.yml..."
-      Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/$package.yml"-UseBasicParsing -OutFile "$path/config/$package.yml";
+      Invoke-WebRequest "$repo/$package.yml"-UseBasicParsing -OutFile "$path/config/$package.yml";
     }
     Catch {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Unable to download config files for: $package An error occured: $_"
@@ -38,7 +39,7 @@ foreach ($package in $packages) {
     $path = "C:\ProgramData\chocolatey\lib\$package\tools"
       Try {
         Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading $package.yml..."
-        Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/$package.yml"-UseBasicParsing -OutFile "$path/$package.yml";
+        Invoke-WebRequest "$repo/$package.yml"-UseBasicParsing -OutFile "$path/$package.yml";
       }
       Catch {
         Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Unable to download $package.yml. An error occured: $_"
@@ -47,7 +48,7 @@ foreach ($package in $packages) {
   elseif ($package -ne "winlogbeat") {
     Try {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Downloading $package.yml..."
-      Invoke-WebRequest "https://raw.githubusercontent.com/d1ll3x/PurpleBox/main/ELK/config/$package.yml"-UseBasicParsing -OutFile "$path/config/$package.yml";
+      Invoke-WebRequest "$repo/$package.yml"-UseBasicParsing -OutFile "$path/config/$package.yml";
     }
     Catch {
       Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Unable to download $package.yml. An error occured: $_"
